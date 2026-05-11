@@ -98,7 +98,6 @@ Example output:
 ### 🔹 S3 Upload (Input Files)
 
 ![S3](<img width="1680" height="880" alt="screenshots:s3-upload" src="https://github.com/user-attachments/assets/411c38ad-a431-47b3-94e7-c9ef49f2f9c9" />
-)
 
 ---
 
