@@ -41,7 +41,7 @@ SQS (DLQ) → Recovery Lambda → DynamoDB
 
 ### S3 Upload
 
-![S3](screenshots/s3-upload.png)
+[S3](screenshots/s3-upload.png)
 
 ### Lambda Logs
 
