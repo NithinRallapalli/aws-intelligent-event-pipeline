@@ -1,18 +1,29 @@
-# 🚀 Intelligent Event-Driven Pipeline with DLQ Recovery
+# 🚀 Intelligent Event Pipeline with AI-Based Failure Analysis
 
 ## 📌 Overview
 
-This project demonstrates a fault-tolerant serverless architecture built using AWS.
+This project demonstrates a **fault-tolerant, AI-enhanced serverless pipeline** built using AWS.
 
-It processes events, handles failures using SQS (Dead Letter Queue), and automatically recovers failed events with intelligent analysis.
+It not only processes events and recovers failures, but also **analyzes failures intelligently** to suggest possible fixes.
+
+---
+
+## 🧠 What Makes This Different?
+
+Most pipelines only retry failures.
+This system **understands failures** and gives insights like:
+
+* “S3 event structure issue”
+* “Missing fields in payload”
+* “Trigger misconfiguration”
 
 ---
 
 ## 🏗️ Architecture
 
-S3 → Lambda → DynamoDB
+S3 → Lambda (Event Processor) → DynamoDB
 ↓
-SQS (DLQ) → Recovery Lambda → DynamoDB
+SQS (DLQ) → Recovery Lambda → DynamoDB (+ AI Analysis)
 
 ---
 
@@ -21,52 +32,92 @@ SQS (DLQ) → Recovery Lambda → DynamoDB
 * AWS Lambda
 * Amazon S3
 * Amazon DynamoDB
-* Amazon SQS (DLQ)
+* Amazon SQS (Dead Letter Queue)
 * Amazon CloudWatch
+* AI Logic (rule-based / API-ready design)
 
 ---
 
 ## 🔄 Workflow
 
-1. File uploaded to S3
+1. Upload JSON file to S3
 2. Lambda processes event
-3. If failure occurs → sent to SQS
-4. Recovery Lambda retries failed events
-5. Intelligent analysis identifies possible failure causes
-6. Results stored in DynamoDB
+3. If failure occurs → message sent to SQS
+4. Recovery Lambda retries failed event
+5. AI module analyzes failure reason
+6. Result + analysis stored in DynamoDB
+
+---
+
+## 🤖 AI Integration
+
+The recovery system includes an **AI-inspired analysis engine** that:
+
+* Detects common failure patterns
+* Suggests possible fixes
+* Stores insights alongside recovered data
+
+Example output:
+
+```json
+{
+  "status": "recovered",
+  "analysis": "S3 event processing issue. Fix: Validate event structure and triggers."
+}
+```
 
 ---
 
 ## 📸 Screenshots
 
-### S3 Upload
+### 🔹 Event Processor (S3 Trigger)
 
-[S3](screenshots/s3-upload.png)
+![EventProcessor](<img width="897" height="256" alt="screenshots:lambda-1-logs" src="https://github.com/user-attachments/assets/b28a4f15-788f-4a75-98bd-10cd8fbf4f2b" />)
 
-### Lambda Logs
 
-![Logs](screenshots/lambda-logs.png)
+### 🔹 Recovery Worker (SQS Trigger)
 
-### SQS Queue
+![RecoveryWorker](![Uploading screenshots:lambda-logs.png…]()
+)
 
-![SQS](screenshots/sqs-queue.png)
+### 🔹 CloudWatch Logs (AI Analysis)
 
-### DynamoDB
+![Logs](<img width="1680" height="832" alt="Screenshot 2026-05-11 at 7 22 38 AM" src="https://github.com/user-attachments/assets/b3c2f5d4-150e-49a9-b4ae-40f69f477349" />
+)
 
-![DynamoDB](screenshots/dynamodb-table.png)
+### 🔹 SQS Queue (Failed Messages)
+
+![SQS](<img width="1680" height="381" alt="screenshots:sqs-queue" src="https://github.com/user-attachments/assets/aef0a3d9-bdc5-4eac-b68e-1a622658e61c" />
+)
+
+### 🔹 DynamoDB (Recovered + AI Analysis)
+
+![DynamoDB](<img width="1680" height="835" alt="screenshots:dynamodb-table" src="https://github.com/user-attachments/assets/ca8f6176-b24d-4d8d-96c7-1c0595e7ba5d" />
+)
+
+### 🔹 S3 Upload (Input Files)
+
+![S3](<img width="1680" height="880" alt="screenshots:s3-upload" src="https://github.com/user-attachments/assets/411c38ad-a431-47b3-94e7-c9ef49f2f9c9" />
+)
 
 ---
 
 ## 💡 Key Features
 
 * Event-driven architecture
-* Fault tolerance using DLQ
-* Auto-recovery system
-* Intelligent failure analysis
-* Serverless design
+* Dead-letter queue (DLQ) handling
+* Automatic failure recovery
+* AI-based failure analysis
+* Serverless and scalable
 
 ---
 
-## 📌 Author
+## 🚀 Outcome
+
+Built a **production-style resilient system** that not only prevents data loss but also **helps debug failures automatically**.
+
+---
+
+## 👨‍💻 Author
 
 Nithin Rallapalli
